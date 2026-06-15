@@ -1,0 +1,259 @@
+---
+/*
+  services.astro
+  details the two services we offer, driveways and decks.
+  each service has its own section with a description, checklist, pricing, and placeholder for before/after photos.
+*/
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Services | Pacific Waterblasting">
+
+  <!-- page header -->
+  <section class="services-hero">
+    <div class="hero-inner">
+      <p class="eyebrow">What we offer</p>
+      <h1>Our Services</h1>
+      <p class="hero-sub">Driveway and deck cleaning for residential properties in Te Awamutu and surrounds.</p>
+    </div>
+  </section>
+
+  <!-- driveway section, our most common job -->
+  <section class="service-section">
+    <div class="service-inner">
+      <div class="service-text">
+        <span class="service-tag">Most popular</span>
+        <h2>Driveway Cleaning</h2>
+        <p>Concrete and paved driveways collect moss, mould, algae, and grime — especially in Waikato's humid climate. We use a professional rotary surface cleaner attachment that delivers an even, streak-free clean across the entire surface.</p>
+        <p>No patch marks. No missed edges. Just a consistently clean driveway.</p>
+        <ul class="service-list">
+          <li>Concrete & paved surfaces</li>
+          <li>Rotary surface cleaner for even results</li>
+          <li>Moss and algae treatment</li>
+          <li>Single visit, fast turnaround</li>
+        </ul>
+
+        <!-- pricing, update this if rates change -->
+        <div class="service-price">
+          <span class="price-from">From</span>
+          <span class="price-amount">$150</span>
+          <span class="price-note">— final price depends on size and condition</span>
+        </div>
+        <a href="/contact" class="btn-primary">Get a Quote</a>
+      </div>
+
+      <!-- driveway before and after photos -->
+<div class="service-image">
+  <div class="service-photos">
+    <div class="service-photo">
+      <span class="photo-label">Before</span>
+      <img src="/images/Driveway Before 2.jpg" alt="Driveway before waterblasting" loading="lazy" />
+    </div>
+    <div class="service-photo">
+      <span class="photo-label after">After</span>
+      <img src="/images/Driveway After 2.jpg" alt="Driveway after waterblasting" loading="lazy" />
+    </div>
+  </div>
+</div>
+
+  <!-- deck section, alternates layout direction for visual variety -->
+  <section class="service-section alt">
+    <div class="service-inner reverse">
+      <div class="service-text">
+        <h2>Deck Cleaning</h2>
+        <p>Timber decks need careful handling — too much pressure or the wrong angle and you'll get streaking or raised grain. We pre-rinse, apply the right cleaning solution, and waterblast at the correct angle to lift grime without damaging the timber.</p>
+        <p>If your deck needs sealing after cleaning, we can arrange that too.</p>
+        <ul class="service-list">
+          <li>Timber and composite decks</li>
+          <li>Pre-treatment with appropriate chemicals</li>
+          <li>Technique that prevents streaking</li>
+          <li>Sealing available as an add-on</li>
+        </ul>
+
+        <!-- pricing, update this if rates change -->
+        <div class="service-price">
+          <span class="price-from">From</span>
+          <span class="price-amount">$200</span>
+          <span class="price-note">— final price depends on size and condition</span>
+        </div>
+        <a href="/contact" class="btn-primary">Get a Quote</a>
+      </div>
+
+      <!-- deck before and after photos -->
+<div class="service-image">
+  <div class="service-photos">
+    <div class="service-photo">
+      <span class="photo-label">Before</span>
+      <img src="/images/Deck Before 2.jpg" alt="Deck before waterblasting" loading="lazy" />
+    </div>
+    <div class="service-photo">
+      <span class="photo-label after">After</span>
+      <img src="/images/Deck After 2.jpg" alt="Deck after waterblasting" loading="lazy" />
+    </div>
+  </div>
+</div>
+  </section>
+
+  <!-- bottom cta, catches anyone who scrolled through without clicking a quote button -->
+  <section class="cta-band">
+    <div class="cta-inner">
+      <h2>Not sure what you need?</h2>
+      <p>Get in touch and we'll work it out together. Free quotes, no obligation.</p>
+      <a href="/contact" class="btn-white">Contact Us</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* page header */
+  .services-hero {
+    background: var(--bg-light);
+    padding: 4rem 1.5rem 2.5rem;
+    border-bottom: 1px solid #e0f2fe;
+  }
+  .hero-inner { max-width: 700px; margin: 0 auto; }
+  .eyebrow {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--blue);
+    margin-bottom: 0.75rem;
+  }
+  .services-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+  }
+  .hero-sub { color: #475569; font-size: 1.05rem; line-height: 1.6; }
+
+  /* each service gets its own full section, alternating background colours */
+  .service-section { padding: 5rem 1.5rem; background: var(--white); }
+  .service-section.alt { background: var(--bg-light); }
+  .service-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* rtl trick flips the layout so the image alternates sides */
+  .service-inner.reverse { direction: rtl; }
+  .service-inner.reverse > * { direction: ltr; }
+
+  .service-tag {
+    display: inline-block;
+    background: #dbeafe;
+    color: var(--blue);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .service-text h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+  .service-text p { color: #475569; line-height: 1.7; margin-bottom: 1rem; }
+
+  /* checklist items with a blue tick instead of a bullet */
+  .service-list { list-style: none; margin: 1.25rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .service-list li { padding-left: 1.4rem; position: relative; color: #334155; font-size: 0.95rem; }
+  .service-list li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  /* pricing display */
+  .service-price { display: flex; align-items: baseline; gap: 0.4rem; margin: 1.5rem 0; flex-wrap: wrap; }
+  .price-from { font-size: 0.9rem; color: #64748b; }
+  .price-amount { font-size: 2rem; font-weight: 900; color: var(--blue); }
+  .price-note { font-size: 0.85rem; color: #94a3b8; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .btn-primary:hover { background: #38BDF8; }
+
+  /* placeholder shown until real before/after photos are ready */
+  .service-image.placeholder {
+    background: #e0f2fe;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #93c5fd;
+  }
+  .service-image.placeholder span { color: #64748b; font-size: 0.9rem; font-weight: 600; text-align: center; padding: 1rem; }
+
+  /* cta band */
+  .cta-band { background: var(--blue); padding: 4rem 1.5rem; text-align: center; }
+  .cta-inner { max-width: 600px; margin: 0 auto; }
+  .cta-band h2 { color: var(--white); font-size: 1.8rem; font-weight: 900; margin-bottom: 0.75rem; }
+  .cta-band p { color: #bfdbfe; margin-bottom: 1.5rem; font-size: 1.05rem; }
+  .btn-white {
+    display: inline-block;
+    background: var(--white);
+    color: var(--blue);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .btn-white:hover { background: var(--bg-light); }
+
+  /* stacks to single column on mobile */
+  @media (max-width: 768px) {
+    .service-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .service-inner.reverse { direction: ltr; }
+  }
+
+  /* before and after photo pair inside each service section */
+  .service-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .service-photo {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .service-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+  }
+  .photo-label {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: var(--dark);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1;
+  }
+  .photo-label.after { background: var(--blue); }
+</style>

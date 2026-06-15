@@ -1,0 +1,265 @@
+---
+/*
+  Layout.astro
+  the main layout wrapper used by every page on the site.
+  handles the nav, footer, global styles, and page metadata.
+  includes a hamburger menu for mobile navigation.
+*/
+
+interface Props {
+  title: string;
+}
+
+// pulls the page title in from whichever page is using this layout
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Professional waterblasting in Te Awamutu. Driveway and deck cleaning. Weekend availability." />
+    <title>{title}</title>
+
+    <!-- loads Inter from Google Fonts, used as the main font across the site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- sticky nav stays at the top as the user scrolls -->
+    <nav>
+      <div class="nav-inner">
+        <a href="/" class="logo">Pacific Waterblasting</a>
+
+        <!-- desktop nav links, hidden on mobile -->
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+
+        <!-- the quote button is the main call to action in the nav -->
+        <a href="/contact" class="nav-cta">Get a Quote</a>
+
+        <!-- hamburger button, only visible on mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- mobile dropdown menu, toggled by the hamburger button -->
+      <div class="mobile-menu" id="mobile-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/contact" class="mobile-cta">Get a Quote</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- slot is where each page's content gets injected -->
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-logo">Pacific Waterblasting</p>
+        <p>Te Awamutu &amp; surrounds &nbsp;·&nbsp; Weekends available &nbsp;·&nbsp; <a href="tel:+64">Call us</a></p>
+        <p class="footer-small">© 2025 Pacific Waterblasting. All rights reserved.</p>
+      </div>
+    </footer>
+
+<!-- toggles the mobile menu open and closed when hamburger is clicked -->
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('active');
+        });
+
+        // closes the menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('active');
+          });
+        });
+      }
+    </script>
+
+  </body>
+</html>
+
+<style is:global>
+  /*
+    global styles and css variables
+    all colours and fonts are defined here so they can be reused across every page
+  */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1B6CA8;
+    --blue-light: #38BDF8;
+    --dark: #0F172A;
+    --bg-light: #F0F9FF;
+    --white: #FFFFFF;
+    --font: 'Inter', sans-serif;
+  }
+
+  html { font-family: var(--font); color: var(--dark); background: var(--white); }
+
+  /* flexbox column so the footer always sticks to the bottom */
+  body { min-height: 100vh; display: flex; flex-direction: column; }
+  main { flex: 1; }
+
+  /* nav styles */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--blue-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .logo {
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--blue);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin-left: auto;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--blue-light); }
+
+  /* hamburger button, three lines that animate to an X when active */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: auto;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* animates the three lines into an X when the menu is open */
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* mobile dropdown menu, hidden by default */
+  .mobile-menu {
+    display: none;
+    background: var(--white);
+    border-top: 1px solid #e0f2fe;
+    padding: 1rem 1.5rem;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu ul li a {
+    display: block;
+    padding: 0.85rem 0;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 1px solid #f0f9ff;
+  }
+  .mobile-menu ul li a:hover { color: var(--blue); }
+
+  /* get a quote button inside the mobile menu */
+  .mobile-cta {
+    display: inline-block !important;
+    background: var(--blue);
+    color: var(--white) !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 6px;
+    margin-top: 1rem;
+    text-align: center;
+    border-bottom: none !important;
+  }
+  .mobile-cta:hover { background: var(--blue-light) !important; }
+
+  /* footer styles */
+  footer {
+    background: var(--dark);
+    color: #94a3b8;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .footer-logo {
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  footer a { color: var(--blue-light); text-decoration: none; }
+  .footer-small { margin-top: 1rem; font-size: 0.8rem; }
+
+  /* on mobile, hide desktop nav and show hamburger */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+</style>

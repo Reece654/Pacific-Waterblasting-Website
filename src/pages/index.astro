@@ -1,0 +1,265 @@
+---
+/*
+  index.astro
+  the homepage, first thing visitors see.
+  covers the hero, service overview, why us section, and a call to action band.
+*/
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Pacific Waterblasting | Te Awamutu">
+
+  <!-- hero section, the main headline and entry point for new visitors -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Te Awamutu's local waterblasting specialist</p>
+        <h1>Driveways cleaned properly,<br/>not just rinsed.</h1>
+        <p class="hero-sub">Moss, mould, and grime removed from driveways and decks. Weekend availability. Fast turnaround.</p>
+        <div class="hero-actions">
+          <a href="/contact" class="btn-primary">Get a Free Quote</a>
+          <a href="/services" class="btn-secondary">See Our Services</a>
+        </div>
+      </div>
+
+      <!-- hero photo, shows a clean driveway result immediately -->
+      <div class="hero-image">
+        <img src="/images/Driveway After 2.jpg" alt="Clean driveway after waterblasting" />
+      </div>
+    </div>
+  </section>
+
+  <!-- quick overview of the two services with pricing and feature lists -->
+  <section class="services-strip">
+    <div class="strip-inner">
+      <div class="service-card">
+        <h3>Driveways</h3>
+        <p>Concrete and paved driveways. Street cleaner attachment for an even, streak-free result.</p>
+        <ul class="card-list">
+          <li>Moss and algae treatment</li>
+          <li>Streak-free finish</li>
+          <li>Single visit turnaround</li>
+        </ul>
+        <div class="card-footer">
+          <span class="card-price">From $150</span>
+          <a href="/contact" class="card-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <h3>Decks</h3>
+        <p>Timber deck cleaning using the right chemicals and technique. No streaking, no damage.</p>
+        <ul class="card-list">
+          <li>Pre-treatment included</li>
+          <li>Safe for all timber types</li>
+          <li>Sealing available as add-on</li>
+        </ul>
+        <div class="card-footer">
+          <span class="card-price">From $200</span>
+          <a href="/contact" class="card-link">Get a Quote →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- trust signals, why a local customer should pick us over a Hamilton operator -->
+  <section class="why">
+    <div class="why-inner">
+      <h2>Why choose Pacific Waterblasting?</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <strong>Local to Te Awamutu</strong>
+          <p>No call-out fees from Hamilton. We're based here and know the area.</p>
+        </div>
+        <div class="why-item">
+          <strong>Weekend availability</strong>
+          <p>We work weekends so you don't have to take time off work.</p>
+        </div>
+        <div class="why-item">
+          <strong>Proper technique</strong>
+          <p>Right chemicals, right pressure, right method — for each surface type.</p>
+        </div>
+        <div class="why-item">
+          <strong>Fast turnaround</strong>
+          <p>Most jobs completed in a single visit. No waiting around.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- bottom cta band, pushes visitors toward getting a quote -->
+  <section class="cta-band">
+    <div class="cta-inner">
+      <h2>Ready for a cleaner property?</h2>
+      <p>Get in touch for a free, no-obligation quote.</p>
+      <a href="/contact" class="btn-primary">Contact Us</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* hero */
+  .hero {
+    background: var(--bg-light);
+    padding: 5rem 1.5rem;
+    border-bottom: 1px solid #e0f2fe;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--blue);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    color: var(--dark);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: #475569;
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--blue);
+    color: var(--white);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .btn-primary:hover { background: #155889; }
+  .btn-secondary {
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .btn-secondary:hover { background: var(--bg-light); }
+  .hero-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(27,108,168,0.15);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+  }
+
+  /* stacks on mobile */
+  @media (max-width: 768px) {
+    .hero-inner { 
+      display: block;
+    }
+    .hero-image { display: none; }
+  }
+
+  /* services strip */
+  .services-strip { padding: 4rem 1.5rem; background: var(--white); }
+  .strip-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* card uses flex column so the footer pins to the bottom */
+  .service-card {
+    border: 1px solid #e0f2fe;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card:hover { box-shadow: 0 4px 20px rgba(27,108,168,0.12); }
+  .service-card h3 { font-size: 1.8rem; font-weight: 900; margin-bottom: 0.75rem; color: var(--blue); }
+  .service-card p { color: #475569; line-height: 1.6; }
+
+  /* tick list inside each service card */
+  .card-list {
+    list-style: none;
+    margin: 1rem 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .card-list li {
+    padding-left: 1.4rem;
+    position: relative;
+    color: #475569;
+    font-size: 0.9rem;
+  }
+  .card-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  /* price and link pinned to the bottom of each card */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #e0f2fe;
+  }
+  .card-price {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--blue);
+  }
+  .card-link {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .card-link:hover { text-decoration: underline; }
+
+  /* why us section */
+  .why { padding: 4rem 1.5rem; background: var(--bg-light); }
+  .why-inner { max-width: 1100px; margin: 0 auto; }
+  .why h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 2rem; color: var(--dark); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .why-item { background: var(--white); border-radius: 8px; padding: 1.5rem; }
+  .why-item strong { display: block; font-weight: 700; margin-bottom: 0.4rem; color: var(--blue); }
+  .why-item p { color: #475569; font-size: 0.95rem; line-height: 1.6; }
+
+  /* cta band at the bottom of the page */
+  .cta-band { background: var(--blue); padding: 4rem 1.5rem; text-align: center; }
+  .cta-inner { max-width: 600px; margin: 0 auto; }
+  .cta-band h2 { color: var(--white); font-size: 1.8rem; font-weight: 900; margin-bottom: 0.75rem; }
+  .cta-band p { color: #bfdbfe; margin-bottom: 1.5rem; font-size: 1.05rem; }
+  .cta-band .btn-primary { background: var(--white); color: var(--blue); }
+  .cta-band .btn-primary:hover { background: var(--bg-light); }
+</style>
