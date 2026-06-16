@@ -2,13 +2,13 @@
 /*
   services.astro
   details the two services we offer, driveways and decks.
-  each service has its own section with a description, checklist, pricing, and placeholder for before/after photos.
+  each service has its own section with a description, checklist, pricing, and before/after photos.
 */
 
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Services | Pacific Waterblasting">
+<Layout title="Services | Pacific Waterblasting" description="Driveway and deck cleaning in Te Awamutu. Professional waterblasting from $150. Free quotes, weekend availability.">
 
   <!-- page header -->
   <section class="services-hero">
@@ -25,49 +25,52 @@ import Layout from '../layouts/Layout.astro';
       <div class="service-text">
         <span class="service-tag">Most popular</span>
         <h2>Driveway Cleaning</h2>
-        <p>Concrete and paved driveways collect moss, mould, algae, and grime — especially in Waikato's humid climate. We use a professional rotary surface cleaner attachment that delivers an even, streak-free clean across the entire surface.</p>
+        <p>Concrete and paved driveways collect moss, mould, algae, and grime, especially in Waikato's humid climate. We use a professional rotary surface cleaner attachment that delivers an even, consistent clean across the entire surface.</p>
         <p>No patch marks. No missed edges. Just a consistently clean driveway.</p>
         <ul class="service-list">
-          <li>Concrete & paved surfaces</li>
-          <li>Rotary surface cleaner for even results</li>
+          <li>Professional rotary surface cleaner</li>
           <li>Moss and algae treatment</li>
-          <li>Single visit, fast turnaround</li>
+          <li>Pre-treatment applied before blasting</li>
+          <li>Single visit turnaround</li>
         </ul>
 
         <!-- pricing, update this if rates change -->
         <div class="service-price">
           <span class="price-from">From</span>
           <span class="price-amount">$150</span>
-          <span class="price-note">— final price depends on size and condition</span>
+          <span class="price-note">Final price depends on size and condition</span>
         </div>
         <a href="/contact" class="btn-primary">Get a Quote</a>
       </div>
 
       <!-- driveway before and after photos -->
-<div class="service-image">
-  <div class="service-photos">
-    <div class="service-photo">
-      <span class="photo-label">Before</span>
-      <img src="/images/Driveway Before 2.jpg" alt="Driveway before waterblasting" loading="lazy" />
+      <div class="service-image">
+        <div class="service-photos">
+          <div class="service-photo">
+            <span class="photo-label">Before</span>
+            <img src="/images/Driveway Before 2.jpg" alt="Driveway before waterblasting" loading="lazy" />
+          </div>
+          <div class="service-photo">
+            <span class="photo-label after">After</span>
+            <img src="/images/Driveway After 2.jpg" alt="Driveway after waterblasting" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="service-photo">
-      <span class="photo-label after">After</span>
-      <img src="/images/Driveway After 2.jpg" alt="Driveway after waterblasting" loading="lazy" />
-    </div>
-  </div>
-</div>
+  </section>
 
   <!-- deck section, alternates layout direction for visual variety -->
   <section class="service-section alt">
     <div class="service-inner reverse">
       <div class="service-text">
         <h2>Deck Cleaning</h2>
-        <p>Timber decks need careful handling — too much pressure or the wrong angle and you'll get streaking or raised grain. We pre-rinse, apply the right cleaning solution, and waterblast at the correct angle to lift grime without damaging the timber.</p>
+        <p>Timber decks need careful handling, as too much pressure or the wrong angle can damage the timber. We use a two-stage process: a cleaning solution to lift grime and mould, followed by a timber brightener to restore the natural wood colour.</p>
         <p>If your deck needs sealing after cleaning, we can arrange that too.</p>
         <ul class="service-list">
-          <li>Timber and composite decks</li>
-          <li>Pre-treatment with appropriate chemicals</li>
-          <li>Technique that prevents streaking</li>
+          <li>Two-stage cleaning process</li>
+          <li>Timber brightener to restore wood colour</li>
+          <li>Safe for all timber types</li>
           <li>Sealing available as an add-on</li>
         </ul>
 
@@ -75,24 +78,26 @@ import Layout from '../layouts/Layout.astro';
         <div class="service-price">
           <span class="price-from">From</span>
           <span class="price-amount">$200</span>
-          <span class="price-note">— final price depends on size and condition</span>
+          <span class="price-note">Final price depends on size and condition</span>
         </div>
         <a href="/contact" class="btn-primary">Get a Quote</a>
       </div>
 
       <!-- deck before and after photos -->
-<div class="service-image">
-  <div class="service-photos">
-    <div class="service-photo">
-      <span class="photo-label">Before</span>
-      <img src="/images/Deck Before 2.jpg" alt="Deck before waterblasting" loading="lazy" />
+      <div class="service-image">
+        <div class="service-photos">
+          <div class="service-photo">
+            <span class="photo-label">Before</span>
+            <img src="/images/Deck Before 2.jpg" alt="Deck before waterblasting" loading="lazy" />
+          </div>
+          <div class="service-photo">
+            <span class="photo-label after">After</span>
+            <img src="/images/Deck After 2.jpg" alt="Deck after waterblasting" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="service-photo">
-      <span class="photo-label after">After</span>
-      <img src="/images/Deck After 2.jpg" alt="Deck after waterblasting" loading="lazy" />
-    </div>
-  </div>
-</div>
   </section>
 
   <!-- bottom cta, catches anyone who scrolled through without clicking a quote button -->
@@ -188,40 +193,6 @@ import Layout from '../layouts/Layout.astro';
   }
   .btn-primary:hover { background: #38BDF8; }
 
-  /* placeholder shown until real before/after photos are ready */
-  .service-image.placeholder {
-    background: #e0f2fe;
-    border-radius: 12px;
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px dashed #93c5fd;
-  }
-  .service-image.placeholder span { color: #64748b; font-size: 0.9rem; font-weight: 600; text-align: center; padding: 1rem; }
-
-  /* cta band */
-  .cta-band { background: var(--blue); padding: 4rem 1.5rem; text-align: center; }
-  .cta-inner { max-width: 600px; margin: 0 auto; }
-  .cta-band h2 { color: var(--white); font-size: 1.8rem; font-weight: 900; margin-bottom: 0.75rem; }
-  .cta-band p { color: #bfdbfe; margin-bottom: 1.5rem; font-size: 1.05rem; }
-  .btn-white {
-    display: inline-block;
-    background: var(--white);
-    color: var(--blue);
-    padding: 0.75rem 1.75rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  .btn-white:hover { background: var(--bg-light); }
-
-  /* stacks to single column on mobile */
-  @media (max-width: 768px) {
-    .service-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .service-inner.reverse { direction: ltr; }
-  }
-
   /* before and after photo pair inside each service section */
   .service-photos {
     display: grid;
@@ -256,4 +227,26 @@ import Layout from '../layouts/Layout.astro';
     z-index: 1;
   }
   .photo-label.after { background: var(--blue); }
+
+  /* cta band */
+  .cta-band { background: var(--blue); padding: 4rem 1.5rem; text-align: center; }
+  .cta-inner { max-width: 600px; margin: 0 auto; }
+  .cta-band h2 { color: var(--white); font-size: 1.8rem; font-weight: 900; margin-bottom: 0.75rem; }
+  .cta-band p { color: #bfdbfe; margin-bottom: 1.5rem; font-size: 1.05rem; }
+  .btn-white {
+    display: inline-block;
+    background: var(--white);
+    color: var(--blue);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .btn-white:hover { background: var(--bg-light); }
+
+  /* stacks to single column on mobile */
+  @media (max-width: 768px) {
+    .service-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .service-inner.reverse { direction: ltr; }
+  }
 </style>

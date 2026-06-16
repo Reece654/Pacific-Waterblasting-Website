@@ -8,7 +8,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Pacific Waterblasting | Te Awamutu">
+<Layout title="Pacific Waterblasting | Te Awamutu" description="Te Awamutu's local waterblasting specialist. Driveway and deck cleaning. Weekend availability. Free quotes.">
 
   <!-- hero section, the main headline and entry point for new visitors -->
   <section class="hero">
@@ -25,7 +25,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- hero photo, shows a clean driveway result immediately -->
       <div class="hero-image">
-        <img src="/images/Driveway After 2.jpg" alt="Clean driveway after waterblasting" />
+        <img src="/images/Driveway After 1.jpg" alt="Clean driveway after waterblasting" />
       </div>
     </div>
   </section>
@@ -35,12 +35,17 @@ import Layout from '../layouts/Layout.astro';
     <div class="strip-inner">
       <div class="service-card">
         <h3>Driveways</h3>
-        <p>Concrete and paved driveways. Street cleaner attachment for an even, streak-free result.</p>
+        <p>Concrete and paved driveways. Professional rotary surface cleaner for an even, consistent result.</p>
         <ul class="card-list">
+          <li>Professional rotary surface cleaner</li>
           <li>Moss and algae treatment</li>
-          <li>Streak-free finish</li>
+          <li>Pre-treatment applied before blasting</li>
           <li>Single visit turnaround</li>
         </ul>
+                <!-- driveway after photo, shows the result before the price -->
+        <div class="card-image card-image-driveway">
+          <img src="/images/Driveway After 1.jpg" alt="Clean driveway after waterblasting" loading="lazy" />
+        </div>
         <div class="card-footer">
           <span class="card-price">From $150</span>
           <a href="/contact" class="card-link">Get a Quote →</a>
@@ -48,12 +53,17 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="service-card">
         <h3>Decks</h3>
-        <p>Timber deck cleaning using the right chemicals and technique. No streaking, no damage.</p>
+        <p>Timber deck cleaning using the right chemicals and technique, with care taken to protect the timber.</p>
         <ul class="card-list">
-          <li>Pre-treatment included</li>
+          <li>Two-stage cleaning process</li>
+          <li>Timber brightener to restore wood colour</li>
           <li>Safe for all timber types</li>
-          <li>Sealing available as add-on</li>
+          <li>Sealing available as an add-on</li>
         </ul>
+        <!-- deck after photo, shows the result before the price -->
+        <div class="card-image card-image-deck">
+          <img src="/images/Deck After 2.jpg" alt="Clean deck after waterblasting" loading="lazy" />
+        </div>
         <div class="card-footer">
           <span class="card-price">From $200</span>
           <a href="/contact" class="card-link">Get a Quote →</a>
@@ -77,7 +87,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="why-item">
           <strong>Proper technique</strong>
-          <p>Right chemicals, right pressure, right method — for each surface type.</p>
+          <p>Right chemicals, right pressure, right method for each surface type.</p>
         </div>
         <div class="why-item">
           <strong>Fast turnaround</strong>
@@ -159,11 +169,11 @@ import Layout from '../layouts/Layout.astro';
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(27,108,168,0.15);
   }
-  .hero-image img {
+.hero-image img {
     width: 100%;
     height: 500px;
     object-fit: cover;
-    object-position: center bottom;
+    object-position: right bottom;
     display: block;
   }
 
@@ -262,4 +272,40 @@ import Layout from '../layouts/Layout.astro';
   .cta-band p { color: #bfdbfe; margin-bottom: 1.5rem; font-size: 1.05rem; }
   .cta-band .btn-primary { background: var(--white); color: var(--blue); }
   .cta-band .btn-primary:hover { background: var(--bg-light); }
+
+  /* photo inside each service card, sits between the list and the price */
+  .card-image {
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+.card-image img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+  }
+  /* adjust card image positions on mobile only */
+  @media (max-width: 768px) {
+    .card-image-driveway img {
+      object-position: center 90%;
+    }
+    .card-image-deck img {
+      object-position: center 90%;
+    }
+  }
+  /* deck card image zoomed out more on desktop */
+  .card-image-deck img {
+    object-position: center 80%;
+  }
+  /* card images only show on mobile, desktop hero handles the visuals */
+  .card-image {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .card-image {
+      display: block;
+    }
+  }
 </style>
