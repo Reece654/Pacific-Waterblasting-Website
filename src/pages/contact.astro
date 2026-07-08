@@ -24,7 +24,7 @@ import Layout from '../layouts/Layout.astro';
       <!-- quote request form, data-netlify tells Netlify to handle submissions -->
       <div class="form-wrap">
         <h2>Request a Quote</h2>
-        <form name="contact" method="POST" data-netlify="true">
+        <form name="contact" method="POST" data-netlify="true" action="/contact/">
           <input type="hidden" name="form-name" value="contact" />
 
           <div class="field">
